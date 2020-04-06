@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map';
+import Cards from './components/Cards';
+import SearchBar from './components/SearchBar';
 
 class App extends Component{
   constructor(){
     super();
+
     this.state = {
       center: [-98.4916, 29.4252]
     }
@@ -12,10 +15,11 @@ class App extends Component{
     this.changeCenter = this.changeCenter.bind(this);
   }
 
-  changeCenter(long, lat){
-    let city = [long, lat];
+  changeCenter(city){
+    var that = this;
+    console.log(city);
 
-    this.setState({
+    that.setState({
       center: city
     })
   }
@@ -23,7 +27,9 @@ class App extends Component{
   render(){
     return(
       <div className="App">
-        <Map center={this.state.center} changeCityCenter={this.changeCenter} />
+        <Cards center={this.state.center}/>
+        <SearchBar changeCenter={this.changeCenter}/>
+        <Map center={this.state.center} changeCenter={this.changeCenter} />
       </div>
     )
   }

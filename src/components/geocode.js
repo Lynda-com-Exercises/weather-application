@@ -1,5 +1,3 @@
-"use strict";
-
 /***
  * geocode is a method to search for coordinates based on a physical address and return
  * @param {string} search is the address to search for the geocoded coordinates
@@ -25,7 +23,6 @@ function geocode(search, token) {
         });
 }
 
-
 /***
  * reverseGeocode is a method to search for a physical address based on inputted coordinates
  * @param {object} coordinates is an object with properties "lat" and "lng" for latitude and longitude
@@ -47,7 +44,9 @@ function reverseGeocode(coordinates, token) {
             return res.json();
         })
         // to get all the data from the request, comment out the following three lines...
-        .then(function(data) {
-            return data.features[0].place_name;
-        });
+//         .then(function(data) {
+//             return data.features[0].place_name;
+//         });
 }
+
+module.exports = {geocode, reverseGeocode};
