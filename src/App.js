@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Map from './components/Map';
+import Cards from './components/Cards';
+import SearchBar from './components/SearchBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  constructor(){
+    super();
+
+    this.state = {
+      center: [-98.4916, 29.4252]
+    }
+
+    this.changeCenter = this.changeCenter.bind(this);
+  }
+
+  changeCenter(city){
+    var that = this;
+    console.log(city);
+
+    that.setState({
+      center: city
+    })
+  }
+
+  render(){
+    return(
+      <div className="App">
+        <Cards center={this.state.center}/>
+        <SearchBar changeCenter={this.changeCenter}/>
+        <Map center={this.state.center} changeCenter={this.changeCenter} />
+      </div>
+    )
+  }
 }
-
 export default App;
