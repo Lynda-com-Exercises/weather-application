@@ -11,7 +11,6 @@ class SearchBar extends Component{
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(e){
@@ -20,21 +19,11 @@ class SearchBar extends Component{
         })
     }
 
-    handleClick(e){
-        geo.geocode(this.state.searchCity, mapboxKey).then(function(results){
-            this.props.changeCenter(results);
-        });
-
-    }
-
     render(){
         return(
             <div>
-                
-                    <input type="text" value={this.state.searchCity} placeholder="Search City" onChange={this.handleChange}/>
-                    <button onClick={this.handleClick}>Search</button>
-            
-                
+                <input type="text" value={this.state.searchCity} placeholder="Search City" onChange={this.handleChange}/>
+                <button onClick={(e) => this.props.handleClick(this.state.searchCity)}>Search</button>    
             </div>
         )
     }
