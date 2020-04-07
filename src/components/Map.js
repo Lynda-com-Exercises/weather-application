@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import '../css/Map.css';
 import './geocode.js';
 
-const mapboxKey = require('./keys.js');
+const keys = require('./keys.js');
+const mapboxKey = keys.mapboxKey;
 const geo = require('./geocode.js');
+
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js')
 mapboxgl.accessToken = mapboxKey;
-var marker = new mapboxgl.Marker({
-    draggable: true
-});
-
+var marker;
+var map;
 var city;
 
 class Map extends Component{
@@ -42,17 +42,33 @@ class Map extends Component{
     componentDidMount(){
         var mapCenter = this.props.center;
 
-        var map = new mapboxgl.Map({
+        map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
             zoom: 10,
             center: mapCenter
         });
 
+        marker = new mapboxgl.Marker({
+            draggable: true
+        });
+
         marker.setLngLat(mapCenter);
         marker.addTo(map);
         marker.on('dragend', this.onDragEnd);
         marker.on('drag', this.onDrag);
+    }
+
+    componentDidUpdate(){
+        var mapCenter = this.props.center;
+
+        map.flyTo({
+            center: mapCenter,
+            speed: 1.4,
+            curve:1
+        });
+        marker.setLngLat(mapCenter);
+        marker.addTo(map);
     }
 
     render(){

@@ -6,6 +6,7 @@ class Cards extends Component{
         return(
             <div>
                 <p>{this.props.center}</p>
+                <p>{this.props.number}</p>
             </div>
         )
     }
