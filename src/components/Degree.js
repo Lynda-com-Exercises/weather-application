@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Degree extends Component{
     render(){
         return(
-            <div>
+            <div className="nav-item-degrees">
                 <label>
                     <input type="radio" value="F" checked={this.props.temperature === 'F'} onChange={e => this.props.handleOptionChange(e)} />
                     F&#176;

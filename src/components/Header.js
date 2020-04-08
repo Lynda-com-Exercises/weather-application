@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactAnimatedWeather from 'react-animated-weather';
 import '../css/Header.css';
 const converters = require('./tempConverters.js');
 
@@ -22,7 +23,15 @@ class Header extends Component{
         return(
             <header>
                 <p>{this.props.city}{this.props.state}{this.props.country}</p>
-                <p>{temp}&#176;{type}</p>
+                <p>
+                    <ReactAnimatedWeather
+                        icon={this.props.icon}
+                        color='#0D0221'
+                        size='30'
+                        animate='true'
+                    />
+                    {temp}&#176;{type}
+                </p>
             </header>
         )
     }
