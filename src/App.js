@@ -26,6 +26,7 @@ class App extends Component{
       forecast: 3,
       temperature: 'F',
       currentTemp: 0,
+      currentIcon: '',
       daysForecast: []
     }
 
@@ -111,6 +112,7 @@ class App extends Component{
 
       that.setState({
         currentTemp: data.currently.temperature,
+        currentIcon: data.currently.icon,
         daysForecast: data.daily.data
       })
     })
@@ -147,6 +149,8 @@ class App extends Component{
     let allForecast = this.state.daysForecast;
     let limit = this.state.forecast;
     let degree = this.state.temperature;
+    let icon = this.state.currentIcon;
+    icon = icon.replace(/-/g, "_").toUpperCase();
     let allCards = [];
 
     if(allForecast && allForecast.length > 0){
@@ -196,6 +200,7 @@ class App extends Component{
             country={this.state.country}
             temp={this.state.currentTemp}
             degree={this.state.temperature}
+            icon={icon}
         />  
         <Cards days={allCards} degree={degree} />
         <Map center={this.state.center} changeCenter={this.changeCenter} />

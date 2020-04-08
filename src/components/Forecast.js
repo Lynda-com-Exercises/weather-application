@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Forecast extends Component{
     render(){
         return(
-            <label>
+            <label className="nav-item-forecast">
                 Days of Forecast: 
                 <select value={this.props.forecast} onChange={e => this.props.handleSelect(e)}>
                     <option value="3">3</option>

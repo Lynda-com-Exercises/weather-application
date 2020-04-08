@@ -23,8 +23,8 @@ class SearchBar extends Component{
     render(){
         return(
             <div>
-                <input type="text" value={this.state.searchCity} placeholder="Search City" onChange={this.handleChange}/>
-                <button onClick={(e) => this.props.handleClick(this.state.searchCity)}>Search</button>    
+                <input className="search-bar" type="text" value={this.state.searchCity} placeholder="Search City" onChange={this.handleChange}/>
+                <button onClick={(e) => this.props.handleClick(this.state.searchCity)}><i class="fas fa-search-location"></i></button>    
             </div>
         )
     }
