@@ -44,7 +44,7 @@ class Map extends Component{
 
         map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9',
+            style: 'mapbox://styles/mapbox/streets-v11',
             zoom: 10,
             center: mapCenter
         });
@@ -73,7 +73,7 @@ class Map extends Component{
 
     render(){
         return(
-            <div>
+            <div className="map-container">
                 <div id="map" onChange={this.onDragEnd}></div>
                 <pre id="coordinates" className="coordinates"></pre>
             </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Moment from 'react-moment';
+import '../css/Cards.css';
 
 class Cards extends Component{
 
@@ -16,17 +16,15 @@ class Cards extends Component{
         }
 
         return(
-            <div>{
+            <div className="card-container">{
                 this.props.days.map((item, key) => (
-                    <div key={key}>
-                        <Moment 
-                            date={item.time}
-                            parse="YYYY-MM-dd ddd"
-                            format="ddd MMMM Do, YYYY"
-                        />
-                        <h3>{item.time}</h3>
+                    <div key={key} className="card">
+                        <p><strong>{item.time}</strong></p>
                         <p>{item.temperatureLow}&#176;{type} / {item.temperatureHigh}&#176;{type}</p>
+                        <img src="" alt="weather forecast" />
                         <p>{item.summary}</p>
+                        <p>humidity: {item.humidity * 100}</p>
+                        <p>pressure: {Math.round(item.pressure)}</p>
                     </div>
                 ))
             }</div>

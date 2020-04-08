@@ -1,0 +1,11 @@
+.logo{
+    background-color: #0D0221;
+    color:white;
+    text-align: left;
+}
+
+h1{
+    font-family: 'Abril Fatface', cursive;
+    margin: 0 !important;
+    padding: 0.7em;
+}
