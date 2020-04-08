@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/SearchBar.css';
 const geo = require('./geocode.js');
 const mapboxKey = require('./keys.js');
 

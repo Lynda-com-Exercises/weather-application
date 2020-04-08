@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Header.css';
 const converters = require('./tempConverters.js');
 
 class Header extends Component{

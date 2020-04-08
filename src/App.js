@@ -116,6 +116,15 @@ class App extends Component{
     })
   }
 
+  formatDate(date){
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let daysOfWeek = ["Sun", "Mon", "Tues", 'Wed', "Thu", "Fri", "Sat"];
+
+    let str = `${daysOfWeek[date.getUTCDay()]} ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+    return str;
+  }
+
   componentDidMount(){
     let that = this;
 
@@ -144,9 +153,9 @@ class App extends Component{
       for(let i = 0; i < limit; i++){
         let high, low;
         let date = new Date(allForecast[i].time * 1000);
-        console.log(date);
-        let dateFormat = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getUTCDay();
-        
+        //let dateFormat = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+        let dateFormat = this.formatDate(date);
+
         if(degree === 'F'){
           high = Math.round(allForecast[i].temperatureHigh);
           low = Math.round(allForecast[i].temperatureLow);
